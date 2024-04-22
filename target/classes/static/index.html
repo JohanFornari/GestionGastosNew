@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Gestión Personas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fc;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .form-control-user {
+            border-radius: 20px;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            margin-bottom: 20px;
+        }
+
+        .btn-user {
+            border-radius: 20px;
+            padding: 15px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+        }
+
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            border-color: #2e59d9;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        .text-gray-900 {
+            color: #2e2e2e !important;
+        }
+
+        .h2 {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h2 text-gray-900 mb-4">Gestión de Gastos</h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="mb-3">
+                                            <input type="email" class="form-control form-control-user"
+                                                id="id_email" aria-describedby="emailHelp"
+                                                placeholder="Ingrese su Email...">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="id_password" placeholder="Contraseña">
+                                        </div>
+                                        <button type="button" onclick="loginUsuario()"
+                                            class="btn btn-primary btn-user">Iniciar Sesión</button>
+                                        <button type="button" onclick="location.href='register.html'"
+                                            class="btn btn-secondary btn-user">Registrar Cuenta</button>
+                                    </form>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
