@@ -96,7 +96,7 @@ public class GastoServiceImpl implements GastoService{
         //3. Crear gasto
         Gasto gasto = new Gasto();
         gasto.setCategoriaSubcategoria(cat_subcat);
-        gasto.setFecha(new Date());
+        gasto.setFecha(gastoDTO.getFecha());
         gasto.setMonto(gastoDTO.getMonto());
         gasto.setDescripcion(gastoDTO.getDescripcion());
         return save(gasto);

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gestiongastos.models.Ingreso;
 import com.gestiongastos.models.RequestBodyCategoria;
 import com.gestiongastos.models.Usuario;
 import com.gestiongastos.services.UsuarioService;
@@ -90,6 +91,27 @@ public class UsuarioController {
     	usuario.setIdUsuario(id);
         return usuarioService.actualizarUsuario(usuario, id);
     }
+    
+    
+    @GetMapping(value = "listarsubcategorias/{id}")
+	public List<Map<String, Object>> ListarSubcategoriasporUsuario(@PathVariable UUID id) {
+		return usuarioService.obtenerSubcategoriasCategoriasPorUsuario(id);
+	}
+    
+    @GetMapping(value = "listargastos/{id}")
+	public List<Map<String, Object>> ListarGastosPorUsuario(@PathVariable UUID id) {
+		return usuarioService.obtenerGastosPorUsuario(id);
+	}
+    
+    @GetMapping(value = "ingresos/{id}")
+	public List<Ingreso> ListarIngresosPorUsuario(@PathVariable UUID id) {
+		return usuarioService.obtenerIngresosPorUsuario(id);
+	}
+    
+    @GetMapping(value = "reporte/{id}")
+	public List<Object[]> generarInformeMensual(@PathVariable UUID id) {
+		return usuarioService.generarInformeMensual(id);
+	}
 
 }
 

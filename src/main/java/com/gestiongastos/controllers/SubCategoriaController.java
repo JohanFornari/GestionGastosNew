@@ -75,6 +75,8 @@ public class SubCategoriaController {
 		
 		List<Subcategoria> lista = new ArrayList<>();
 		
+		
+		
 		List<CategoriaSubcategoria> listaca = cat.findAll();
 		
 		for (CategoriaSubcategoria u : listaca) {

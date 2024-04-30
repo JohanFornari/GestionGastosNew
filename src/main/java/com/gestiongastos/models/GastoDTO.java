@@ -1,10 +1,12 @@
 package com.gestiongastos.models;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class GastoDTO {
     private Double monto;
     private String descripcion;
+    private Date fecha;
     private UUID idCategoria;
     private UUID idSubcategoria;
     private UUID idUsuario;
@@ -50,6 +52,14 @@ public class GastoDTO {
 
 	public void setIdUsuario(UUID idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
  
