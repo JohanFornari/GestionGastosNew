@@ -1,5 +1,6 @@
 package com.gestiongastos.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -245,6 +246,53 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public List<Object[]> generarInformeMensual(UUID idUsuario) {
 		return usuarioRepository.generarInformeMensual(idUsuario);
+	}
+
+	@Override
+	public List<Map<String, Object>> obtenerGastosPorUsuarioYMes(UUID idUsuario,int year,int month) {
+		
+		List<Object[]> resultados = usuarioRepository.obtenerGastosPorUsuarioYMes(idUsuario,year,month);
+		List<Map<String, Object>> gastosFormateados = new ArrayList<>();
+
+		for (Object[] resultado : resultados) {
+			Gasto gasto = (Gasto) resultado[0];
+			Categoria categoria = (Categoria) resultado[1];
+			Subcategoria subcategoria = (Subcategoria) resultado[2];
+
+			Map<String, Object> gastoFormateado = new LinkedHashMap<>();
+			gastoFormateado.put("idGasto", gasto.getIdGasto());
+			gastoFormateado.put("fecha", gasto.getFecha());
+			gastoFormateado.put("monto", gasto.getMonto());
+			gastoFormateado.put("descripcion", gasto.getDescripcion());
+
+			Map<String, Object> categoriaMap = new LinkedHashMap<>();
+			categoriaMap.put("idCategoria", categoria.getIdCategoria());
+			categoriaMap.put("descripcion", categoria.getDescripcion());
+			categoriaMap.put("nombCategoria", categoria.getNombCategoria());
+
+			Map<String, Object> subcategoriaMap = new LinkedHashMap<>();
+			subcategoriaMap.put("idSubcategoria", subcategoria.getIdSubcategoria());
+			subcategoriaMap.put("nombSubcategoria", subcategoria.getNombSubcategoria());
+			subcategoriaMap.put("descripcion", subcategoria.getDescripcion());
+
+			gastoFormateado.put("categoria", categoriaMap);
+			gastoFormateado.put("subcategoria", subcategoriaMap);
+
+			gastosFormateados.add(gastoFormateado);
+		}
+
+		return gastosFormateados;
+		
+	}
+
+	@Override
+	public List<Ingreso> obtenerIngresosPorUsuarioMes(UUID idUsuario, int year, int month) {
+		return usuarioRepository.obtenerIngresosPorUsuarioMes(idUsuario, year, month);
+	}
+
+	@Override
+	public Object[] generarInformeTotal(UUID idUsuario) {
+		return usuarioRepository.generarInformeTotal(idUsuario);
 	}
 
 

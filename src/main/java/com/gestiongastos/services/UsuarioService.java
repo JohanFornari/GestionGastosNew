@@ -1,5 +1,6 @@
 package com.gestiongastos.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -9,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.gestiongastos.models.Gasto;
 import com.gestiongastos.models.Ingreso;
 import com.gestiongastos.models.RequestBodyCategoria;
 import com.gestiongastos.models.RequestBodyModel;
@@ -41,5 +43,11 @@ public interface UsuarioService {
     
 	public List<Ingreso> obtenerIngresosPorUsuario(@Param("idUsuario") UUID idUsuario);
 	
+	public List<Ingreso> obtenerIngresosPorUsuarioMes(@Param("idUsuario") UUID idUsuario,int year,int month);
+	
 	public List<Object[]> generarInformeMensual(@Param("idUsuario") UUID idUsuario);
+	
+	public Object[] generarInformeTotal(@Param("idUsuario") UUID idUsuario);
+	
+	public List<Map<String, Object>> obtenerGastosPorUsuarioYMes(UUID idUsuario,int year,int month);
 }

@@ -19,10 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestiongastos.models.Ingreso;
-import com.gestiongastos.models.RequestBodyCategoria;
 import com.gestiongastos.models.Usuario;
 import com.gestiongastos.services.UsuarioService;
-import com.gestiongastos.services.UsuarioServiceImpl;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -46,13 +44,7 @@ public class UsuarioController {
 		usuario.setTelefono(usuario.getTelefono());
 		return usuarioService.save(usuario);
 	}
-	/*@PostMapping("/asociar-categoria")
-	public ResponseEntity<Void> AsociarCategoriaAUsuario(@RequestBody RequestBodyCategoria requestBodyCat) {
-		Long id = requestBodyCat.getDocumento();
-		UUID[] idsCategorias = requestBodyCat.getIdsCAtegorias();
-		usuarioService.AsociarCategoriasAUsuario(requestBodyCat);		
-		return ResponseEntity.ok().build();
-	}*/
+
 	@PostMapping("/asociar-categoria")
 	public ResponseEntity<Void> asociarCategoriaAUsuario(@RequestBody Map<String, UUID> requestBody,@RequestParam(name="id_usuario", required=true)UUID idUsuario) {
 		UUID id = idUsuario;
@@ -108,9 +100,24 @@ public class UsuarioController {
 		return usuarioService.obtenerIngresosPorUsuario(id);
 	}
     
+    @GetMapping(value = "ingresos/{id}/mes/{year}/{month}")
+	public List<Ingreso> ListarIngresosPorUsuarioMes(@PathVariable UUID id, @PathVariable int year, @PathVariable int month) {
+		return usuarioService.obtenerIngresosPorUsuarioMes(id, year, month);
+	}
+    
     @GetMapping(value = "reporte/{id}")
 	public List<Object[]> generarInformeMensual(@PathVariable UUID id) {
 		return usuarioService.generarInformeMensual(id);
+	}
+	
+    @GetMapping(value = "reporte/total/{id}")
+	public Object[] generarInformeTotal(@PathVariable UUID id) {
+		return usuarioService.generarInformeTotal(id);
+	}
+	
+	@GetMapping("listargastos/{idUsuario}/mes/{year}/{month}")
+	public List<Map<String, Object>> obtenerGastosPorUsuarioYMes(@PathVariable UUID idUsuario, @PathVariable int year, @PathVariable int month) {
+	    return usuarioService.obtenerGastosPorUsuarioYMes(idUsuario, year, month);
 	}
 
 }
