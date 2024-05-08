@@ -294,6 +294,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Object[] generarInformeTotal(UUID idUsuario) {
 		return usuarioRepository.generarInformeTotal(idUsuario);
 	}
+	
+	@Override
+    public boolean existeCorreo(String email) {
+        Usuario usuario = usuarioRepository.obtenerUsuarioPorEmail(email);
+        return usuario != null;
+    }
 
 
 }

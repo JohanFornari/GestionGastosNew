@@ -50,4 +50,6 @@ public interface UsuarioService {
 	public Object[] generarInformeTotal(@Param("idUsuario") UUID idUsuario);
 	
 	public List<Map<String, Object>> obtenerGastosPorUsuarioYMes(UUID idUsuario,int year,int month);
+	
+	public boolean existeCorreo(String email);
 }

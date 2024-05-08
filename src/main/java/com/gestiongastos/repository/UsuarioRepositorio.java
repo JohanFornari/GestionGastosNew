@@ -1,6 +1,5 @@
 package com.gestiongastos.repository;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,13 +8,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.gestiongastos.models.Gasto;
 import com.gestiongastos.models.Ingreso;
 import com.gestiongastos.models.Usuario;
 
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario, UUID> {
 
+	@Query("SELECT u FROM Usuario u where u.email = :email")
+	Usuario obtenerUsuarioPorEmail(@Param("email") String email);
+	
 	@Query("SELECT g, cs.usuarioCategoria.categoria, cs.subcategoria FROM Gasto g JOIN g.categoriaSubcategoria cs WHERE cs.usuarioCategoria.usuario.idUsuario = :idUsuario")
 	List<Object[]> listarGastosPorUsuario(@Param("idUsuario") UUID idUsuario);
 

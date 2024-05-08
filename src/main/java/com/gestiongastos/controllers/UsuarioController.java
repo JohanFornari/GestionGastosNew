@@ -32,9 +32,11 @@ import de.mkammerer.argon2.Argon2Factory;
 public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
-	
+	   
 	@PostMapping("")
 	public Usuario crearUsuario(@RequestBody Usuario usuario) {
+		
+		if(!usuarioService.existeCorreo(usuario.getEmail())) {
 		usuario.setNombre(usuario.getNombre());
 		usuario.setApellido(usuario.getApellido());
 		Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
@@ -43,6 +45,11 @@ public class UsuarioController {
 		usuario.setClave(hash);
 		usuario.setTelefono(usuario.getTelefono());
 		return usuarioService.save(usuario);
+		}
+		else {
+			System.out.println("existe el correo");
+			return null;
+		}
 	}
 
 	@PostMapping("/asociar-categoria")
