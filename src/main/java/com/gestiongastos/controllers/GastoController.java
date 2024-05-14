@@ -19,7 +19,7 @@ import com.gestiongastos.models.Gasto;
 import com.gestiongastos.models.GastoDTO;
 import com.gestiongastos.services.GastoService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/gasto")
 public class GastoController {

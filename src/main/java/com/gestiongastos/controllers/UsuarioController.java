@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gestiongastos.models.Categoria;
 import com.gestiongastos.models.Ingreso;
+import com.gestiongastos.models.Subcategoria;
 import com.gestiongastos.models.Usuario;
 import com.gestiongastos.services.UsuarioService;
 
@@ -26,7 +28,7 @@ import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -105,6 +107,11 @@ public class UsuarioController {
     @GetMapping(value = "ingresos/{id}")
 	public List<Ingreso> ListarIngresosPorUsuario(@PathVariable UUID id) {
 		return usuarioService.obtenerIngresosPorUsuario(id);
+	}
+    
+    @GetMapping(value = "listarsubcategorias/{id}/{category}")
+	public List<Subcategoria> ListarSubcategoriasporUsuarioCategoria(@PathVariable UUID id, @PathVariable UUID category) {
+		return usuarioService.obtenerSubcategoriasPorUsuario(id, category);
 	}
     
     @GetMapping(value = "ingresos/{id}/mes/{year}/{month}")

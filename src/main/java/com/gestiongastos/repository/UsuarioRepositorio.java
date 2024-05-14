@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.gestiongastos.models.Ingreso;
+import com.gestiongastos.models.Subcategoria;
 import com.gestiongastos.models.Usuario;
 
 @Repository
@@ -22,6 +23,9 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, UUID> {
 
 	@Query("SELECT cs.subcategoria, cs.usuarioCategoria.categoria FROM CategoriaSubcategoria cs WHERE cs.usuarioCategoria.usuario.idUsuario = :idUsuario")
 	List<Object[]> obtenerSubcategoriasCategoriasPorUsuario(@Param("idUsuario") UUID idUsuario);
+	
+	@Query("SELECT cs.subcategoria FROM CategoriaSubcategoria cs WHERE cs.usuarioCategoria.usuario.idUsuario = :idUsuario and cs.usuarioCategoria.categoria.IdCategoria =:category")
+	List<Subcategoria> obtenerSubcategoriasPorUsuario(@Param("idUsuario") UUID idUsuario,@Param("category") UUID category);
 
 	@Query("SELECT g, cs.usuarioCategoria.categoria, cs.subcategoria FROM Gasto g JOIN g.categoriaSubcategoria cs WHERE cs.usuarioCategoria.usuario.idUsuario = :idUsuario "
 			+ "AND YEAR(g.fecha) = :year AND MONTH(g.fecha) = :month")

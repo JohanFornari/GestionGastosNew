@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestiongastos.models.TipoIngreso;
 import com.gestiongastos.services.TipoIngresoService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/tipoingreso")
 public class TipoIngresoController {

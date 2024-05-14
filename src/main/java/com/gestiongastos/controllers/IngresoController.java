@@ -21,7 +21,7 @@ import com.gestiongastos.models.IngresoDTO;
 import com.gestiongastos.repository.IngresoRepositorio;
 import com.gestiongastos.services.IngresoService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/ingreso")
 public class IngresoController {

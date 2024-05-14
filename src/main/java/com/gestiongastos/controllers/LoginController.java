@@ -10,7 +10,7 @@ import com.gestiongastos.models.Usuario;
 import com.gestiongastos.services.UsuarioServiceImpl;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class LoginController {
 

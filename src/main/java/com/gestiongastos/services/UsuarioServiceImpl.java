@@ -301,5 +301,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuario != null;
     }
 
+	@Override
+	public List<Subcategoria> obtenerSubcategoriasPorUsuario(UUID id, UUID category) {
+		return usuarioRepository.obtenerSubcategoriasPorUsuario(id,category);
+	}
+
 
 }

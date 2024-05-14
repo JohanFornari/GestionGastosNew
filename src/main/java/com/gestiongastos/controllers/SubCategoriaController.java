@@ -33,7 +33,7 @@ import com.gestiongastos.services.CategoriaSubcategoriaServiceImpl;
 import com.gestiongastos.services.SubcategoriaServiceImpl;
 import com.gestiongastos.services.UsuarioService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/subcategoria")
 public class SubCategoriaController {

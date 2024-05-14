@@ -20,7 +20,7 @@ import com.gestiongastos.services.CategoriaServiceImpl;
 import com.gestiongastos.services.UsuarioService;
 import com.gestiongastos.services.UsuarioServiceImpl;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/categoria")
 public class CategoriaController {

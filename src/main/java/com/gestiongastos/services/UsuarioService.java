@@ -14,6 +14,7 @@ import com.gestiongastos.models.Gasto;
 import com.gestiongastos.models.Ingreso;
 import com.gestiongastos.models.RequestBodyCategoria;
 import com.gestiongastos.models.RequestBodyModel;
+import com.gestiongastos.models.Subcategoria;
 import com.gestiongastos.models.Usuario;
 
 public interface UsuarioService {
@@ -52,4 +53,6 @@ public interface UsuarioService {
 	public List<Map<String, Object>> obtenerGastosPorUsuarioYMes(UUID idUsuario,int year,int month);
 	
 	public boolean existeCorreo(String email);
+	
+	public List<Subcategoria> obtenerSubcategoriasPorUsuario(UUID id,UUID category);
 }
