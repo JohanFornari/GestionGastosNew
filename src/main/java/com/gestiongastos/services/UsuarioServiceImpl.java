@@ -48,8 +48,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	public Usuario save(Usuario usuario) {
 		Perfil perfil = new Perfil();
-		System.out.println("perfil : " + usuario.getPerfil().getCodperfil());
-		perfil = perfilService.obtenerPerfilById(usuario.getPerfil().getCodperfil()).get();
+		System.out.println("perfil : " + usuario.getPerfil().getIdPerfil());
+		perfil = perfilService.obtenerPerfilById(usuario.getPerfil().getIdPerfil()).get();
 		usuario.setPerfil(perfil);
 		return usuarioRepository.save(usuario);
 	}

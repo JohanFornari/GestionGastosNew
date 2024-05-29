@@ -1,6 +1,7 @@
 package com.gestiongastos.services;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,12 @@ public class IngresoServiceImpl implements IngresoService{
         ingreso.setDescripcion(descripcion);
         return ingresoRepository.save(ingreso);
     }
+
+	@Override
+	public List<Ingreso> listarIngresos() {
+		
+		return ingresoRepository.findAll();
+	}
     
     
     

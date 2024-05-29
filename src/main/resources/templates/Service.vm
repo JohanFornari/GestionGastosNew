@@ -1,0 +1,37 @@
+package ${paquete};
+
+#foreach($libreria in $libreriasBasicas)
+import $libreria;
+#end
+
+@Service
+public class ${entidad}Service {
+	
+    @Autowired
+    private ${entidad}Repository ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Repository;
+
+    // Crear ${entidad}
+    public ${entidad} crear${entidad}(${entidad} ${entidad.toLowerCase()}) {
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Repository.save(${entidad.toLowerCase()});
+    }
+
+    // Listar ${entidad}
+    public List<${entidad}> listar${entidad}() {
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Repository.findAll();
+    }
+
+    // Obtener ${entidad} por su ID
+    public Optional<${entidad}> obtener${entidad}ById(int id) {
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Repository.findById(id);
+    }
+
+    // Actualizar ${entidad}
+    public ${entidad} actualizar${entidad}(${entidad} ${entidad.toLowerCase()}) {
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Repository.save(${entidad.toLowerCase()});
+    }
+
+    // Eliminar ${entidad} por su ID
+    public void eliminar${entidad}ById(int id) {
+        ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Repository.deleteById(id);
+    }
+}

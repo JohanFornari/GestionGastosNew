@@ -1,0 +1,45 @@
+package ${paquete};
+
+#foreach($libreria in $libreriasBasicas)
+import $libreria;
+#end
+
+
+@RestController
+@RequestMapping("/${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}")
+public class ${entidad}Controller {
+
+    @Autowired
+    private ${entidad}Service ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Service;
+
+    //Crear ${entidad}
+    @PostMapping("")
+    public ${entidad} crear${entidad}(@RequestBody ${entidad} ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}) {
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Service.crear${entidad}(${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)});
+    }
+
+    //Listar ${entidad}
+    @GetMapping("")
+    public List<${entidad}> getAll${entidad}() {
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Service.listar${entidad}();
+    }
+
+    //Obtener ${entidad} por su ID
+    @GetMapping("/{id}")
+    public Optional<${entidad}> obtener${entidad}ById(@PathVariable int id) {
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Service.obtener${entidad}ById(id);
+    }
+
+    //Actualizar ${entidad}
+    @PutMapping("/{id}")
+    public ${entidad} actualizar${entidad}(@PathVariable int id, @RequestBody ${entidad} ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}) {
+    	${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}.setId${entidad}(id);
+        return ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Service.actualizar${entidad}(${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)});
+    }
+
+    //Eliminar ${entidad} por su ID
+    @DeleteMapping("/{id}")
+    public void eliminar${entidad}ById(@PathVariable int id) {
+        ${entidad.substring(0, 1).toLowerCase()}${entidad.substring(1)}Service.eliminar${entidad}ById(id);
+    }
+}

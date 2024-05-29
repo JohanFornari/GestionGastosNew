@@ -56,6 +56,12 @@ public class IngresoController {
 		}
 		return ingresos_usuario;
 	}
+	
+	@GetMapping(value = "")
+	public List<Ingreso> ObtenerIngresos() {
+
+		return ingresoService.listarIngresos();
+	}
 		
 		
 	@DeleteMapping(value = "/{id}")

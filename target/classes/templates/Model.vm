@@ -1,0 +1,37 @@
+package ${paquete};
+
+#foreach($libreria in $libreriasBasicas)
+import $libreria;
+#end
+
+@Entity
+public class ${entidad} {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	#foreach($atributo in $atributos)
+	private ${atributo.tipo} ${atributo.nombre};
+	#end
+	
+	public ${entidad}(#set($firstAttribute = true)#foreach($atributo in $atributos)${atributo.tipo} ${atributo.nombre}#if(!$foreach.last),#end#end){
+	#foreach($atributo in $atributos)
+	    this.${atributo.nombre} = ${atributo.nombre};
+	#end
+	}
+	
+	public ${entidad}() {
+        super();
+    }
+    
+	#foreach($atributo in $atributos)
+    #set($firstChar = $atributo.nombre.substring(0, 1).toUpperCase())
+    #set($restOfWord = $atributo.nombre.substring(1))
+    public ${atributo.tipo} get${firstChar}${restOfWord}() {
+        return this.${atributo.nombre};
+    }
+
+    public void set${firstChar}${restOfWord}(${atributo.tipo} ${atributo.nombre}) {
+        this.${atributo.nombre} = ${atributo.nombre};
+    }
+	#end
+}

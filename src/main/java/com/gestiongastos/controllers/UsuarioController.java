@@ -39,6 +39,7 @@ public class UsuarioController {
 	public Usuario crearUsuario(@RequestBody Usuario usuario) {
 		
 		if(!usuarioService.existeCorreo(usuario.getEmail())) {
+		System.out.println("No existe");
 		usuario.setNombre(usuario.getNombre());
 		usuario.setApellido(usuario.getApellido());
 		Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
@@ -46,6 +47,7 @@ public class UsuarioController {
 		//usuario.setDocumento(usuario.getDocumento());
 		usuario.setClave(hash);
 		usuario.setTelefono(usuario.getTelefono());
+		
 		return usuarioService.save(usuario);
 		}
 		else {

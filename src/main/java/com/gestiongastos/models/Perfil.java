@@ -1,56 +1,48 @@
 package com.gestiongastos.models;
 
-import java.io.Serializable;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "perfiles")
-public class Perfil implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class Perfil {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codperfil;
-	private String nombreperfil;
-	private String privilegio;
-
-	public Perfil(int codPerfil, String nombPerfil, String privilegio) {
-		this.codperfil = codPerfil;
-		this.nombreperfil = nombPerfil;
-		this.privilegio = privilegio;
-	}
-
-	public Perfil() {
-		super();
-	}
-
-	public int getCodperfil() {
-		return codperfil;
-	}
-
-	public void setCodperfil(int codperfil) {
-		this.codperfil = codperfil;
-	}
-
-	public String getNombreperfil() {
-		return nombreperfil;
-	}
-
-	public void setNombreperfil(String nombreperfil) {
-		this.nombreperfil = nombreperfil;
-	}
-
-	public String getPrivilegio() {
-		return privilegio;
-	}
-
-	public void setPrivilegio(String privilegio) {
-		this.privilegio = privilegio;
-	}
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idPerfil;
+	private String nombre;
+	private int privilegio;
 	
+	public Perfil(int idPerfil,String nombre,int privilegio){
+	    this.idPerfil = idPerfil;
+	    this.nombre = nombre;
+	    this.privilegio = privilegio;
+	}
+	
+	public Perfil() {
+        super();
+    }
+    
+    public int getIdPerfil() {
+        return this.idPerfil;
+    }
+
+    public void setIdPerfil(int idPerfil) {
+        this.idPerfil = idPerfil;
+    }
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public int getPrivilegio() {
+        return this.privilegio;
+    }
+
+    public void setPrivilegio(int privilegio) {
+        this.privilegio = privilegio;
+    }
 }

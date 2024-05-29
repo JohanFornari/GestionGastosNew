@@ -1,0 +1,11 @@
+package ${paquete};
+
+#foreach($libreria in $libreriasBasicas)
+import $libreria;
+#end
+
+@Repository
+public interface ${entidad}Repository extends JpaRepository<${entidad}, Integer>{
+
+}
+	
